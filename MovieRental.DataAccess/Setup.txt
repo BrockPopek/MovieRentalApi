@@ -1,0 +1,3 @@
+﻿Setup the database using the commands below.
+
+Update-Database -Project MovieRental.DataAccess -Context ApplicationUserDbContext
