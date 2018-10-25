@@ -47,7 +47,7 @@ namespace MovieRentalApi.Controllers
         }
 
         /// <summary>
-        /// Create a new movie.
+        /// Create a new movie.  RESTRICTED: For Managers Only. 
         /// </summary>
         /// <param name="movie">Movie Model</param>
         [HttpPost]
@@ -63,7 +63,7 @@ namespace MovieRentalApi.Controllers
         }
 
         /// <summary>
-        /// Update a movie.
+        /// Update a movie.  RESTRICTED: For Managers Only.
         /// </summary>
         /// <param name="movie">Movie Model</param>
         [HttpPut]
@@ -82,7 +82,7 @@ namespace MovieRentalApi.Controllers
         }
 
         /// <summary>
-        /// Delete the customer.
+        /// Delete the customer.  RESTRICTED: For Managers Only.
         /// </summary>
         /// <param name="movieID"></param>
         [HttpDelete("[action]")]
