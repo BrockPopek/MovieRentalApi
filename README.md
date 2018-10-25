@@ -10,7 +10,7 @@ To initialize your database, please update connection string in the appsettings.
 
 ## Running the Api
 
-To startup the solution, just press F5, or debug.  This will open a Swagger page at http://localhost:44389/swagger.  The Swagger page will then allow you to view the available Api calls.  Then go to the Register call and add a user.  When the user is added, copy the returned token string.  Then press the Authorize button at the top and enter the following in the text box:
+To startup the solution, just press F5, or debug.  This will open a browser.  Then go to the Api documentation and test page which is Swagger by putting Swagger at the end of the url, i.e. http://localhost:44389/swagger.  The Swagger page will then allow you to view the available Api calls.  Then go to the Register call and add a user.  When the user is added, copy the returned token string.  Then press the Authorize button at the top and enter the following in the text box:
 
 `Bearer CopiedTokenString`
 
