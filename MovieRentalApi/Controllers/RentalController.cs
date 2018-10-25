@@ -21,6 +21,16 @@ namespace MovieRentalApi.Controllers
         }
 
         /// <summary>
+        /// Get all of the movies rented out to the current user.
+        /// </summary>
+        /// <returns>List of Movies</returns>
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<RentalHistoryModel>>> GetAllForCurrentUser()
+        {
+            return Ok(await _rentalService.GetAllForUser(User.Identity.Name));
+        }
+
+        /// <summary>
         /// Rent a movie.
         /// </summary>
         /// <param name="rental">Rental Model</param>

@@ -8,5 +8,6 @@ namespace MovieRental.Contract.Service
     {
         Task<string> RentOut(RentalModel model, string updateBy);
         Task<(string errorMessage, ReturnModel returnModel)> ReturnMovie(RentalModel model, string updateBy);
+        Task<IEnumerable<RentalHistoryModel>> GetAllForUser(string updateBy);
     }
 }

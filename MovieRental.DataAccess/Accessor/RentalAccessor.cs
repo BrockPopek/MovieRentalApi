@@ -7,11 +7,37 @@ using MovieRental.DataAccess.DbContext;
 using MovieRental.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using Omu.ValueInjecter;
+using System.Collections.Generic;
 
 namespace MovieRental.DataAccess.Accessor
 {
     public class RentalAccessor : IRentalAccessor
-    {     
+    {
+        public async Task<IEnumerable<RentalHistoryModel>> GetAllForCustomerAsync(int customerID)
+        {
+            using (var context = new ApplicationUserDbContext())
+            {
+                var rentals = await context.Rentals
+                    .Include(m => m.Movie)
+                    .Where(m => m.CustomerId == customerID)
+                    .ToListAsync();
+
+                var models = new List<RentalHistoryModel>();
+                foreach (var rental in rentals)
+                {
+                    var model = new RentalHistoryModel();
+                    model.InjectFrom(rental);
+
+                    model.Movie = new MovieModel();
+                    model.Movie.InjectFrom(rental.Movie);
+
+                    models.Add(model);
+                }
+
+                return models;
+            }
+        }
+
         public async Task<string> InsertAsync(RentalModel rentalModel, CustomerModel customerModel, string updateBy)
         {
             var errorMessage = string.Empty;

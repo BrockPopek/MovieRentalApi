@@ -9,5 +9,6 @@ namespace MovieRental.Contract.DataAccess
     {
         Task<string> InsertAsync(RentalModel rentalModel, CustomerModel customerModel, string updateBy);
         Task<(string errorMessage, decimal amountOwed)> UpdateAsync(RentalModel rentalModel, CustomerModel customerModel, string updateBy);
+        Task<IEnumerable<RentalHistoryModel>> GetAllForCustomerAsync(int customerID);
     }
 }

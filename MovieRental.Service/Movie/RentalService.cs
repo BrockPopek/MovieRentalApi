@@ -2,6 +2,7 @@
 using MovieRental.Contract.Service;
 using MovieRental.Contract.Model;
 using MovieRental.Contract.DataAccess;
+using System.Collections.Generic;
 
 namespace MovieRental.Service.Movie
 {
@@ -56,5 +57,13 @@ namespace MovieRental.Service.Movie
             return (errorMessage, returnModel);
         }
 
+        public async Task<IEnumerable<RentalHistoryModel>> GetAllForUser(string updateBy)
+        {
+            // Check for existing customer for user.
+            // If there is not one, then give an error.
+            var customer = await _customerService.GetByUser(updateBy);
+
+            return await _rentalAccessor.GetAllForCustomerAsync(customer.CustomerId);
+        }
     }
 }
